@@ -11,6 +11,22 @@ const sizes = {
     aspectRatio: window.innerWidth / window.innerHeight
 }
 
+window.addEventListener('resize',()=>{
+    //update sizes
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
+    sizes.aspectRatio = window.innerWidth / window.innerHeight;
+    
+    //update camera
+    camera.aspect = sizes.aspectRatio;
+    camera.updateProjectionMatrix();
+
+    //update renderer
+    Renderer.setSize(sizes.width, sizes.height);
+    Renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+} )
+
 //**
 // Scene */
 
